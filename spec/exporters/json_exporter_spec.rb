@@ -31,11 +31,11 @@ describe JSONExporter do
 	}
 
 	let(:friendly_json) {
-			friends_array1 = []
+			friends_array = []
 		10.times do 
-			friends_array1 << %Q("_id":"56ab7fc22e481306042c151d","user":{"_id":"56ab7ee72e481306042c1518","name":"QA Couse User 1","email":"qacourseuser1@avenuecode.com"})
+			friends_array << %Q("_id":"56ab7fc22e481306042c151d","user":{"_id":"56ab7ee72e481306042c1518","name":"QA Couse User 1","email":"qacourseuser1@avenuecode.com"})
 		end
-		friends_array1.join(",")
+		friends_array.join(",")
 
 			JSON.parse("[#{friends_array}]")
 
@@ -57,8 +57,8 @@ describe JSONExporter do
 
 			it "should say my social type is FRIENDLY" do
 			json_exported  = exporter.export_friends(friendly_json,current_user_json)
-			json_exported  = xml_exported
-			expect(xml_exported["user"]["socialType"]).to eq("friendly")
+			json_exported  = json_exported
+			expect(json_exported["user"]["socialType"]).to eq("friendly")
 		end
 
 	it "should show 100% percentage attribute when i have more than 15 friends" do
